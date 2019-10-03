@@ -35,7 +35,7 @@ Designed and tested to date with the following equipment:
 
 A few design considerations:
 
-+ Those experienced reading the code will note straight off that the code is huge from a singel device control perspective. And yes it is. It was done this way to make it easier to manage the device setup and management, and I didn't forsee it gettign quite this big.
++ Those experienced reading the code will note straight off that the code is huge from a single device control perspective. And yes it is. It was done this way to make it easier to manage the device setup and management, and I didn't forsee it gettign quite this big.
 + The code is designed to accomodate up to 5 controllers and their configuration. Meaning you have one code file to manage, rather than 5 individual ones. This also flows through to the Blynk platform too. And the combinaiton of the two drove my decision to stick to one file for the code.
 + The Bkynk platform has the capacity to have multiple devices loaded, which also comes with multiple access keys, one for each device. However, the Blynk platform has 256 individual ports per device as well, far more than is needed for this project.
 + So to manage the device structure and setup in one file on one screen with one Blynk device key, made a lot of sense. Especially when I can take the file on screen plug in any of the Ardunio's and upload. The code figures out which one is which and how it operates, I just need to put them bakc in the right rooms.
@@ -84,7 +84,14 @@ The next step is to add in the Blynk platform:
 If you have got to this point, you're probably well on the track to making things work.
 
 A couple of things to note:
-This has been built in New Zealand, so the default timezone is likely the opposite side of the world to you, so update it accordingly.
-The code uses 
++ This has been built in New Zealand, so the default timezone is likely the opposite side of the world to you, so update it accordingly.
++ The code uses NZ English, so yes things may look misspelt to you, not in my part of the world.
++ Temperature is Degrees Celcius, however there is a Farenheight variable in there if you really really need to go that way. Probably quite a bit of a rewrite, soemthign to tackle as an option if enough people want to know about it. 
++ The location informaiton is for Auckland New Zealand, might be a bit of fun to leave that as it is, however, your sunrise and sunset triggers won't work quite so well. Might be ok in the UK, as it's sort of opposite, but for the rest of the world it will do strange things.
+
++ There are a few settings that are documented but I need to be clear on one. There is a switch in there for control of the external device, one means that the Ardunio manages the device on and off as the temperature changes, this is for a dumb heater and the WiFi switch.
++ The other is somewhat more complex as it approaches things with a turn the device on, say the aircon unit on cooling, and the Arduino will only meddle with it after that if the Temperature gets too cold, as in it will switch to Heating, or it gets to the end of the period and switches the aircon unit off again. This is where the Logitech hub is useful, you tell IFTTT what you want the hub, and aircon unit, to do when your Arduino triggers it. Put it in the appropriate places and it should do it's thing no trouble.
 
 More to come as I can document, the code does have a lot of documentation. And reporting on what is configured and going on can be monitored through the serial monitor in your Arduino IDE or suitable serial interface. 
+
+Pictures and things to follow when I have a change to pull it all together. 
