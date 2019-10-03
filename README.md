@@ -4,7 +4,7 @@ Arduino distributed Home Automation for the home DIY hacker/builder
 Have saved about 30% on our typical electricity heating bill for both Aircon and convection heating/cooling systems.
 
 For managing:
-Heating and/or cooling connected to normal power socket
+. Heating and/or cooling connected to normal power socket. Great for when you can't get into the walls, so to speak.
 Temp and humidity monitoring on the Blynk platform
 Connectivity to Magic Mirror though a http json API for further reporting/monitoring
 Control lighting/or lamp for morning and evening
