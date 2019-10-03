@@ -52,12 +52,52 @@ One of my first cuts of this is this instructable, which also has much of the in
 
 The D1 mini ESP8266 devices are quite versitile for this application and whic they can be clocked at 160Mhz, running at the default 80Mhz is fine for this purpose. 
 
+A couple of other considerations:
+
+I could add an infra-red controller to the Arduino instead of the Logitech remote Hub, though I already had that in place for another reason and it reduced the burden of the build in gettign things working. Maybe an addition for later on.
+
+The other is the WiFi switch over adding an Arduino relay to the controlled devices, heaters in my case. This was again about off the shelf working kit, and it also means I have both less modificaiton of the existign equipment to do, and given it is mains voltage, less exposure to me havign a live wire get free or some otehr hazardous stuff like that. Buring down the house isn't part of the plan.
+
 With the design considerations, I found that the D1's have the expected MAC address which enabled me to distinguish which was which and thus use the same code file for all of them.
 
 So the trick here is to load the software on the device and have it run while monitoring in the Arduino IDE serial monitor, when they boot, the code will display the MAC address fo the device as it starts up. 
-Grab that verbatim and put it into the MAC address area for that device in your setup D1 - D5... 
-If you are looking at the MAC address and also watchign the device monitor on your WiFi router, you will find the MAC address provided witht he Ardunio code is in the reverse order to the router. 
-I based this part on the routine from a code discussion in one of the forums, not sure which and who's code, by atribution for that if someone does spot it, please point it out and I'll link it in. The fact it is backwards is sort of irrelevant for the job at hand, so I've left it be for this reason.
+
+Grab that verbatim (case sensitive) and put it into the MAC address area for that device in your setup D1 - D5... 
+
+If you are looking at the MAC address and also watching the device monitor on your WiFi router, you will find the MAC address provided with the Ardunio code is in the reverse order to the router. 
+
+I based this part on the routine from a code discussion in one of the forums, not sure which and who's code, but atribution for that if someone does spot it, please point it out and I'll link it in. The fact it is backwards is sort of irrelevant for the job at hand, so I've left it be for this reason. I may address it in the future, for now other things are more pressing.
+
+So basic setup:
+
+Grab and Arduino and shield, with a WiFi switch. You'll need an IFTTT account with access to the maker.ifttt.com section.
+This will give you the API key you need for the code before you flash the Arduino.
+
+Link up the WiFi switch to IFTTT:
+
+Make sure the provider software is working and you can control the switch form the provider software.
+
+Find the provider in IFTTT and link it up, as in login and authorise the provider platform.
+
+Then find create your own applets and get started with building your webhooks.
+
++ for If This: Find the webhooks service, this will then enable you to define your webhook name to go with your maker API authorisation code from earlier. Give you webhook a name. i.e., if it's the kitchen heater, and you're turning it on, maybe call it Kitchen-Heater-On (this is the name you add to the Code for the Low Temp Trigger as well as the Standard On IFTTT event name)
+
+Create that
+
+Now come back to the next + That; Find your switch provider, select what you are doing, (Turning the device on), and select yoru device that you setup earlier.
+And finish.
+
+So this should be enough to create the 'on' aspect for your first controlled device for your first Arduino device.
+Repeat for the off function, i.e Kitchen-Heater-Off
+And you can do the same for a lamp int he same room too, again an On trigger and an Off trigger.
+
+Loading this into the Arduino, and kicking it alight, you shoudl get some idea on what's going on in the serial monitor. CMD/Ctrl + Shift + M in the Arduino IDE.
+
+
+
+
+
 
 
 
